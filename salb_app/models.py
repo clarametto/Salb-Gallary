@@ -43,3 +43,51 @@ class Category(models.Model):
         return self.title
 
 
+class Photo(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    location = models.ForeignKey(Location,on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    image = CloudinaryField('image')
+    posted_at = models.DateTimeField(auto_now_add=True)
+    owner = models.ForeignKey(PersonalInfo, on_delete=models.CASCADE)
+
+    def save_photo(self):
+        self.save()
+
+    def delete_photo(self):
+        self.delete()
+
+    @classmethod
+    def update_photo(cls,id,title,description,location,category, owner):
+        update = cls.object.filter(id=id).update(title=title, description=description, location=location, category=category, owner=owner)
+        return update
+    
+    @classmethod
+    def get_all_photos(cls):
+        photos = cls.object.all()
+        return photos
+
+    @classmethod
+    def get_photo_id(cls,id): 
+        phot_id = cls.object.filter(id=id).all()
+        return phot_id
+
+    @classmethod
+    def filter_photo_by_location(cls,location):
+        photos = cls.object.filter(location___title__icontains=location) 
+        return location  
+
+    @classmethod
+    def filter_photo_by_categories(cls,category):
+        photos = cls.object.filter(category___title__icontains=category) 
+        return category 
+
+    def __str__(self):
+        return self.title
+
+    
+           
+
+
+
