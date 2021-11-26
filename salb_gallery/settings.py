@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'salb_app',
     'cloudinary',
+    'bootstrap5',
 
 ]
 
