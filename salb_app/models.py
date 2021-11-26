@@ -46,7 +46,7 @@ class Category(models.Model):
 class Photo(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
-    location = models.ForeignKey(Location,on_delete=models.CASCADE)
+    location = models.ForeignKey('Location',on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     image = CloudinaryField('image')
     posted_at = models.DateTimeField(auto_now_add=True)
@@ -86,7 +86,29 @@ class Photo(models.Model):
     def __str__(self):
         return self.title
 
+class Location(models.Model):
+    title = models.CharField(max_length=100)  
     
+
+    def save_location(self):
+        self.save()
+
+    def delete_location(self):
+        self.delete()
+
+    def update_location(self, update):
+        self.title = update
+        self.save()
+
+    @classmethod
+    def get_location_id(cls, id):
+        location_id = Location.objects.get(pk = id)
+        return location_id
+
+    def __str__(self):
+        return self.title
+
+
            
 
 
