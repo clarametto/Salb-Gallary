@@ -16,6 +16,30 @@ class PersonalInfo(models.Model):
 
     class Meta:
         ordering = ['name']
-        
+
     def save_PersonalInfo(self):
         self.save()
+    
+
+class Category(models.Model):
+    title = models.CharField(max_length=150)
+
+    def save_category(self):
+        self.save()
+
+    def update_category(self, update):
+        self.title = update
+        self.save()
+
+    def delete_category(self):
+        self.delete()    
+
+    @classmethod
+    def get_category_id(cls,id):
+        category_id = Category.objects.get(pk=id)
+        return category_id
+
+    def __str__(self):
+        return self.title
+
+
