@@ -1,0 +1,42 @@
+{% load static %}
+{% load bootstrap5 %}
+{% load cloudinary %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  {% if title %}
+  <title>Gallery - {{title}}</title>
+  {% else %}
+  <title>Gallery</title>
+  {% endif %}
+
+  {% block styles %}
+  {% bootstrap_css %}
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+  {% endblock styles %}
+</head>
+<body>
+{% include "navbar.html" %}
+  {% block content %}
+  {% endblock content %}
+  <div class="container-fluid">
+    <div class="navbar navbar-default footer">
+      <div class="container">
+        <p class="text-center">
+             <a href="" target="_blank" >© 2021 Salb Williams</a>
+        </p>
+    
+      </div>
+    </div>
+  </div>
+  {% block scripts %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    {% bootstrap_javascript %}
+    <script src="../static/js/script.js"></script>
+  {% endblock scripts %}
+</body>
+</html>
