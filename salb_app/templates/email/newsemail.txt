@@ -1,0 +1,6 @@
+Hello,
+
+We welcome you {{name}}, to Salb Gallery. We post photos everyday.
+
+Regards,
+Salb.
