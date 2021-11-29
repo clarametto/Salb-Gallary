@@ -1,0 +1,74 @@
+{%extends 'base.html'%}
+{% block content %}
+{{ block.super}}
+
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-md-2">
+        <!-- left empty -->
+    </div>
+
+
+    
+    <div class="col-md-8">
+
+      <!-- Loop photos   -->
+      {% for photos_item in photos %}
+      <div class="col-md-3 col-sm-6">
+
+        <!--Display photos  -->
+        <a data-toggle="modal" data-target="#{{photos_item.id}}"><img src="{{photos_item.image.url}}"
+            class="img-thumbnail" alt="Image"></a>
+      </div>
+
+      {% empty %}
+      <div class="row">
+        <h2 class="text-center">There is No photos Items</h2>
+      </div>
+      {% endfor %}
+
+    </div>
+
+    <div class="col-md-2">
+        <!-- left empty -->
+    </div>
+
+  </div>
+  {% for photos_item in photos %}
+  <div class="modal fade" id="{{photos_item.id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <button type="button" class="close" style="color: rgb(180, 41, 41) ; font-size:42px; font-weight:800" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+
+          <h3 class="desc">{{photos_item.title}}</h3>
+          <h6>Category: <span class="category">{{photos_item.category.title}}</span></h6>
+          <h6>{{photos_item.description}}</h6>
+          <h6>Location: <span class="category">{{photos_item.location.title}}</span></h6>
+          <h6>Posted on: <small class="category">{{photos_item.posted_at}}</small></h6>
+
+          <span>
+            Photo URL: <input type="text" value="{{photos_item.image.url}}" class="btn btn-success form-control photoUrl">
+          </span>
+
+        </div>
+
+        <div class="modal-body">
+          <div class="row">
+            <div class="">
+              <img src="{{photos_item.image.url}}" class="img-thumbnail" alt="Image" onclick="window.open(this.src)">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
