@@ -20,9 +20,47 @@ def search_photos_category(request):
     message = 'You have not searched for any term'
     return render(request, 'search.html', {"message":message})
   
-
+  
 def photos(request):
   photos =Photo.objects.all().order_by("-posted_at")
   location = Location.objects.all()
   return render(request,'photos.html',{'photos':photos, 'location':location})
 
+
+def detail(request,photo_id):
+  locations = Location.objects.all()
+
+  try:
+    photo = get_object_or_404(Photo, pk =photo_id)
+  except ObjectDoesNotExist:
+    raise Http404()
+  return render(request, 'photo.html', {'photo':photo,"locations":locations})
+
+  
+def filter_mombasa_photos(request):
+  try:
+    photos = Photo.objects.filter(location =2)
+  except ObjectDoesNotExist:
+    raise Http404()
+  return render(request, 'locations.html', {'photos':photos})
+
+def filter_nairobi_photos(request):
+  try:
+    photos = Photo.objects.filter(location =1)
+  except ObjectDoesNotExist:
+    raise Http404()
+  return render(request, 'locations.html', {'photos':photos})
+
+def filter_johannesburg_photos(request):
+  try:
+    photos = Photo.objects.filter(location =3)
+  except ObjectDoesNotExist:
+    raise Http404()
+  return render(request, 'locations.html', {'photos':photos})
+
+def filter_narok_photos(request):
+  try:
+    photos = Photo.objects.filter(location =4)
+  except ObjectDoesNotExist:
+    raise Http404()
+  return render(request, 'locations.html', {'photos':photos})
