@@ -24,7 +24,7 @@
 
       {% empty %}
       <div class="row">
-        <h2 class="text-center">There is No photos Items</h2>
+        <h3 class="text-center">There is No photos Items</h3>
       </div>
       {% endfor %}
 
@@ -46,23 +46,21 @@
             <span aria-hidden="true">&times;</span>
           </button>
 
-          <h3 class="desc">{{photos_item.title}}</h3>
+          <h3 class="">{{photos_item.title}}</h3>
           <h6>Category: <span class="category">{{photos_item.category.title}}</span></h6>
           <h6>{{photos_item.description}}</h6>
           <h6>Location: <span class="category">{{photos_item.location.title}}</span></h6>
           <h6>Posted on: <small class="category">{{photos_item.posted_at}}</small></h6>
 
           <span>
-            Photo URL: <input type="text" value="{{photos_item.image.url}}" class="btn btn-success form-control photoUrl">
+            Photo URL: <input type="text" value="{{photos_item.image.url}}" class="btn btn-primary form-control photoUrl">
           </span>
 
         </div>
 
         <div class="modal-body">
           <div class="row">
-            <div class="">
-              <img src="{{photos_item.image.url}}" class="img-thumbnail" alt="Image" onclick="window.open(this.src)">
-            </div>
+            <img src="{{photos_item.image.url}}" class="img-thumbnail" alt="Image" onclick="window.open(this.src)">
           </div>
         </div>
 

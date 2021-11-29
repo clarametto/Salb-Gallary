@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'salb_app',
     'cloudinary',
     'bootstrap5',
+    'bootstrap3',
 
 ]
 
