@@ -2,22 +2,17 @@
 {% block content %}
 {{ block.super}}
 
-<div class="container-fluid">
+<div class="container">
   <div class="row">
 
-    <div class="col-md-2">
-        <!-- left empty -->
-    </div>
-
-
-    <div class="col-md-8">
+    <div class="col-md">
 
       <!-- Loop photos   -->
       {% for photos_item in photos %}
       <div class="col-md-3 col-sm-6">
 
         <!--Display photos  -->
-        <a data-toggle="modal" data-target="#{{photos_item.id}}"><img src="{{photos_item.image.url}}" class="img-thumbnail" alt="Image"></a>
+        <a data-toggle="modal" data-target="#{{photos_item.id}}"><img src="{{photos_item.image.url}}" class="img-thumbnail" height="100px" alt="Image"></a>
       </div>
 
       {% empty %}
@@ -27,10 +22,9 @@
       {% endfor %}
 
     </div>
+    <br>
 
-    <div class="col-md-2">
-        <!-- left empty -->
-    </div>
+    
 
   </div>
 
@@ -48,7 +42,7 @@
           <h6>Category: <span class="category">{{photos_item.category.title}}</span></h6>
           <h6>{{photos_item.description}}</h6>
           <h6>Location: <span class="category">{{photos_item.location.title}}</span></h6>
-          <h6>Posted on: <small class="category">{{photos_item.posted_at}}</small></h6>
+          <h6 class="category">Posted on: {{photos_item.posted_at}}</h6>
 
           <span>
             Photo URL:<input type="text" value="{{photos_item.image.url}}" class="btn btn-primary form-control photoUrl">
@@ -67,5 +61,8 @@
   </div>
 
   {% endfor %}
+  <br>
 </div>
+<br>
 {% endblock %}
+<br>

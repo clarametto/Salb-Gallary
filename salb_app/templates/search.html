@@ -10,16 +10,10 @@
   <h2 class="text-center"> Found 0 photos for the search term {{message}}</h2>
 {% endif %}
 </div>
-<div class="container-fluid">
+<div class="container">
   <div class="row">
-
-    <div class="col-md-2">
-        <!-- left empty -->
-    </div>
-
-
     
-    <div class="col-md-8">
+    <div class="col-md">
 
       <!-- Loop photos   -->
       {% for photos_item in photos %}
@@ -38,9 +32,6 @@
 
     </div>
 
-    <div class="col-md-2">
-        <!-- left empty -->
-    </div>
   </div>
 
   {% for photos_item in photos %}
@@ -58,7 +49,7 @@
           <h6>Category: <span class="category">{{photos_item.category.title}}</span></h6>
           <h6>{{photos_item.description}}</h6>
           <h6>Location: <span class="category">{{photos_item.location.title}}</span></h6>
-          <h6>Posted on: <small class="category">{{photos_item.posted_at}}</small></h6>
+          <h6 class="category">Posted on: {{photos_item.posted_at}}</h6>
           <span>
             Photo url: <input type="text" value="{{photos_item.image.url}}" class="btn btn-primary form-control photoUrl">
           </span>
