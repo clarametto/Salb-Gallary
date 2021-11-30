@@ -38,7 +38,7 @@ https://github.com/clarametto/Salb-Gallary
 
 
 ### Sample Screenshots
-![Screenshot]
+![Screenshot]<img src="salb_app/static/img/salbapp.png">
 
 
 ### Contact
