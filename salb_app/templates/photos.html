@@ -5,14 +5,14 @@
     <div class="container">
         <div class="row">
       
-          <div class="col-md">
+          <div class="">
       
             <!-- Loop photos   -->
             {% for photos_item in photos %}
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-3 ">
       
               <!--Display photos  -->
-              <a data-toggle="modal" data-target="#{{photos_item.id}}"><img src="{{photos_item.image.url}}" class="img-thumbnail" height="100px" alt="Image"></a>
+              <a data-toggle="modal" data-target="#{{photos_item.id}}"><img src="{{photos_item.image.url}}" class="img-thumbnail" alt="Image"></a>
             </div>
       
             {% empty %}
