@@ -1,64 +1,66 @@
 {%extends 'base.html'%}
 {% block content %}
 {{ block.super}}
-
-<div class="container">
-  <div class="row">
-    
-    <div class="col-md">
-
-      <!-- Loop photos   -->
-      {% for photos_item in photos %}
-      <div class="col-md-3 col-sm-6">
-
-        <!--Display photos  -->
-        <a data-toggle="modal" data-target="#{{photos_item.id}}"><img src="{{photos_item.image.url}}"
-            class="img-thumbnail" alt="Image"></a>
-      </div>
-
-      {% empty %}
-      <div class="row">
-        <h3 class="text-center">There is No photos Items</h3>
-      </div>
-      {% endfor %}
-
-    </div>
-
-  </div>
-  {% for photos_item in photos %}
-  <div class="modal fade" id="{{photos_item.id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-
-        <div class="modal-header">
-          <button type="button" class="close" style="color: rgb(180, 41, 41) ; font-size:42px; font-weight:800" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-
-          <h3 class="">{{photos_item.title}}</h3>
-          <h6>Category: <span class="category">{{photos_item.category.title}}</span></h6>
-          <h6>{{photos_item.description}}</h6>
-          <h6>Location: <span class="category">{{photos_item.location.title}}</span></h6>
-          <h6 class="category">Posted on: {{photos_item.posted_at}}</h6>
-
-          <span>
-            Photo URL: <input type="text" value="{{photos_item.image.url}}" class="btn btn-primary form-control photoUrl">
-          </span>
-
+<div style="background-color: #E5E5E5;">
+  <div class="container">
+    <div class="row">
+      
+      <div class="col-md">
+  
+        <!-- Loop photos   -->
+        {% for photos_item in photos %}
+        <div class="col-md-3 col-sm-6">
+  
+          <!--Display photos  -->
+          <a data-toggle="modal" data-target="#{{photos_item.id}}"><img src="{{photos_item.image.url}}"
+              class="img-thumbnail" alt="Image"></a>
         </div>
-
-        <div class="modal-body">
-          <div class="row">
-            <img src="{{photos_item.image.url}}" class="img-thumbnail" alt="Image" onclick="window.open(this.src)">
+  
+        {% empty %}
+        <div class="row">
+          <h3 class="text-center">There is No photos Items</h3>
+        </div>
+        {% endfor %}
+  
+      </div>
+  
+    </div>
+    {% for photos_item in photos %}
+    <div class="modal fade" id="{{photos_item.id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+  
+          <div class="modal-header">
+            <button type="button" class="close" style="color: rgb(180, 41, 41) ; font-size:42px; font-weight:800" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+  
+            <h3 class="">{{photos_item.title}}</h3>
+            <h6>Category: <span class="category">{{photos_item.category.title}}</span></h6>
+            <h6>{{photos_item.description}}</h6>
+            <h6>Location: <span class="category">{{photos_item.location.title}}</span></h6>
+            <h6 class="category">Posted on: {{photos_item.posted_at}}</h6>
+  
+            <span>
+              Photo URL: <input type="text" value="{{photos_item.image.url}}" class="btn btn-primary form-control photoUrl">
+            </span>
+  
           </div>
+  
+          <div class="modal-body">
+            <div class="row">
+              <img src="{{photos_item.image.url}}" class="img-thumbnail" alt="Image" onclick="window.open(this.src)">
+            </div>
+          </div>
+  
         </div>
-
       </div>
     </div>
+    <br>
+    {% endfor %}
   </div>
   <br>
-  {% endfor %}
 </div>
-<br>
+
 {% endblock %}
