@@ -1,0 +1,1 @@
+web: gunicorn salb_gallery.wsgi --log-file -
